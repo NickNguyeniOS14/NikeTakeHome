@@ -10,7 +10,8 @@ import UIKit
 
 class AlbumController {
 
-    var albums: [Album]?
+    var albums: [Album] = []
+    
     let imageCache = NSCache<NSString,UIImage>()
 
     lazy var url: URL = {

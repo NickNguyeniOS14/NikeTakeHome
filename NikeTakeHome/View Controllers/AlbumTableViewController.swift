@@ -10,9 +10,9 @@ import UIKit
 class AlbumTableViewController: UITableViewController {
 
     let albumController = AlbumController()
-
-    enum TableView:String {
-        case cellId = "cellID"
+    
+    enum TableView: String {
+        case cellId 
     }
 
     override func viewDidLoad() {
@@ -31,17 +31,20 @@ class AlbumTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return albumController.albums?.count ?? 0
+        return albumController.albums.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: TableView.cellId.rawValue)
 
-        guard let album = albumController.albums?[indexPath.row] else { preconditionFailure("Something goes wrong") }
+         let album = albumController.albums[indexPath.row]
         
         cell.textLabel?.text = album.name
-        cell.detailTextLabel?.text = album.name
-        albumController.downloadImageFor(album: album, completion: { result in
+
+        cell.detailTextLabel?.text = album.artistName
+        
+        albumController.downloadImageFor(album: album,
+                                         completion: { result in
             DispatchQueue.main.async {
                 cell.setNeedsUpdateConstraints()
                 cell.imageView?.image = try? result.get()
@@ -53,6 +56,9 @@ class AlbumTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let selectedAlbum = albumController.albums[indexPath.row]
+        let detailAlbumViewController = DetailAlbumViewController(album: selectedAlbum, albumController: albumController)
+        navigationController?.pushViewController(detailAlbumViewController, animated: true)
     }
 }
 
