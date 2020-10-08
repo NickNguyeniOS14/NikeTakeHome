@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AlbumTableViewController: UITableViewController {
+final class AlbumTableViewController: UITableViewController {
 
     let albumController = AlbumController()
     
@@ -61,5 +61,3 @@ class AlbumTableViewController: UITableViewController {
         navigationController?.pushViewController(detailAlbumViewController, animated: true)
     }
 }
-
-

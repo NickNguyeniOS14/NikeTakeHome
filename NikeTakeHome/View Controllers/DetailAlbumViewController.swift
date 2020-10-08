@@ -8,7 +8,7 @@
 import UIKit
 import SafariServices
 
-class DetailAlbumViewController: UIViewController {
+final class DetailAlbumViewController: UIViewController {
     
     var album: Album
     var albumController: AlbumController
@@ -99,5 +99,3 @@ class DetailAlbumViewController: UIViewController {
         
     }
 }
-
-

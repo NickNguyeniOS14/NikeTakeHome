@@ -7,7 +7,7 @@
 
 import Foundation
 // Cell : shows name of album, artist, thumbnail image
-// Detail: (bonus) larger image,  genre, release date, copyright info, a button to show website
+// Detail: (bonus) larger image, genre, release date, copyright info, a button to show website
 
 struct Album: Decodable {
     let artistName: String

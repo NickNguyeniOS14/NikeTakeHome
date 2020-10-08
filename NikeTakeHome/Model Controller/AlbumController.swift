@@ -8,11 +8,11 @@
 import UIKit
 //https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json
 
-class AlbumController {
+final class AlbumController {
 
     var albums: [Album] = []
     
-    let imageCache = NSCache<NSString,UIImage>()
+    private let imageCache = NSCache<NSString,UIImage>()
 
     lazy var url: URL = {
         var components = URLComponents()
@@ -65,5 +65,3 @@ class AlbumController {
         }
     }
 }
-
-
