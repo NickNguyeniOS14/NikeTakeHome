@@ -14,7 +14,7 @@
 		B64CBD30252F718C00EDB492 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B64CBD2E252F718C00EDB492 /* LaunchScreen.storyboard */; };
 		B64CBD39252F728A00EDB492 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64CBD38252F728A00EDB492 /* NetworkService.swift */; };
 		B64CBD3C252F73F200EDB492 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64CBD3B252F73F200EDB492 /* Album.swift */; };
-		B695B82B252F88C5008439F5 /* ModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695B82A252F88C5008439F5 /* ModelController.swift */; };
+		B695B82B252F88C5008439F5 /* AlbumController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B695B82A252F88C5008439F5 /* AlbumController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +27,7 @@
 		B64CBD31252F718C00EDB492 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B64CBD38252F728A00EDB492 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B64CBD3B252F73F200EDB492 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		B695B82A252F88C5008439F5 /* ModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelController.swift; sourceTree = "<group>"; };
+		B695B82A252F88C5008439F5 /* AlbumController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,7 +108,7 @@
 		B695B82D252F88C8008439F5 /* Model Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B695B82A252F88C5008439F5 /* ModelController.swift */,
+				B695B82A252F88C5008439F5 /* AlbumController.swift */,
 			);
 			path = "Model Controller";
 			sourceTree = "<group>";
@@ -185,7 +185,7 @@
 				B64CBD3C252F73F200EDB492 /* Album.swift in Sources */,
 				B64CBD28252F718B00EDB492 /* AlbumTableViewController.swift in Sources */,
 				B64CBD24252F718B00EDB492 /* AppDelegate.swift in Sources */,
-				B695B82B252F88C5008439F5 /* ModelController.swift in Sources */,
+				B695B82B252F88C5008439F5 /* AlbumController.swift in Sources */,
 				B64CBD39252F728A00EDB492 /* NetworkService.swift in Sources */,
 				B64CBD26252F718B00EDB492 /* SceneDelegate.swift in Sources */,
 			);
