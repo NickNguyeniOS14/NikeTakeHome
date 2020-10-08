@@ -32,6 +32,7 @@ class DetailAlbumViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         navigationItem.title = album.artistName
         view.backgroundColor = .white
         [albumImageView, genreLabel, copyRightLabel, releaseDateLabel, showWebsiteButton].forEach {
@@ -55,7 +56,6 @@ class DetailAlbumViewController: UIViewController {
             albumImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             albumImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             albumImageView.heightAnchor.constraint(equalToConstant: 300),
-
 
             showWebsiteButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,constant: -20),
             showWebsiteButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -83,7 +83,9 @@ class DetailAlbumViewController: UIViewController {
                 self.albumImageView.image = try? result.get()
             }
         }
+
         let genresStrings = album.genres.map { $0.name }
+
         genreLabel.text = "Genre: \(genresStrings.joined(separator: ","))"
         releaseDateLabel.text = "Release Date: \(album.releaseDate)"
         copyRightLabel.text = album.copyright
