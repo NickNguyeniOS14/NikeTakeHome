@@ -5,12 +5,13 @@
 //  Created by Nick Nguyen on 10/8/20.
 //
 
-import Foundation
+import UIKit
 //https://rss.itunes.apple.com/api/v1/us/apple-music/coming-soon/all/100/explicit.json
 
 class AlbumController {
 
     var albums: [Album]?
+    let imageCache = NSCache<NSString,UIImage>()
 
     lazy var url: URL = {
         var components = URLComponents()
@@ -26,7 +27,7 @@ class AlbumController {
             if let err = error {
                 print(err.localizedDescription)
             }
-            print(response!)
+          
             let jsonDecoder = JSONDecoder()
             do {
                 let rootJSON = try jsonDecoder.decode(RootJSON.self, from: data)
@@ -37,4 +38,31 @@ class AlbumController {
             }
         }
     }
+
+    func downloadImageFor(album: Album, completion: @escaping (Result<UIImage,Error>) -> Void) {
+        let cachedKey = NSString(string: album.id)
+
+        if let image = imageCache.object(forKey: cachedKey) {
+            completion(.success(image))
+            return
+        }
+        let url = URL(string: album.artworkUrl100)!
+
+        Networking.performRequestFor(url: url, httpMethod: .get) { (data, response, error) in
+            guard let data = data else {fatalError()}
+
+            if let err = error {
+                print(err.localizedDescription)
+            }
+            guard let image = UIImage(data: data) else  {
+                completion(.failure(NSError()))
+                return
+            }
+            self.imageCache.setObject(image, forKey: cachedKey)
+            completion(.success(image))
+
+        }
+    }
 }
+
+

@@ -12,15 +12,17 @@ class AlbumTableViewController: UITableViewController {
     let albumController = AlbumController()
 
     enum TableView:String {
-        case cellId = "CELL"
+        case cellId = "cellID"
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+
         navigationItem.title = "Top 100 Albums"
 
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: TableView.cellId.rawValue) // 
+        tableView.register(UITableViewCell.self,
+                           forCellReuseIdentifier: TableView.cellId.rawValue)
+        
         albumController.fetchAlbumsFromServer(callback: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -32,14 +34,26 @@ class AlbumTableViewController: UITableViewController {
         return albumController.albums?.count ?? 0
     }
 
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableView.cellId.rawValue, for: indexPath)
-        let album = albumController.albums?[indexPath.row]
-        cell.textLabel?.text = album?.artistName
-        cell.detailTextLabel?.text = album?.name
+        let cell = UITableViewCell(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: TableView.cellId.rawValue)
+
+        guard let album = albumController.albums?[indexPath.row] else { preconditionFailure("Something goes wrong") }
+        
+        cell.textLabel?.text = album.name
+        cell.detailTextLabel?.text = album.name
+        albumController.downloadImageFor(album: album, completion: { result in
+            DispatchQueue.main.async {
+                cell.setNeedsUpdateConstraints()
+                cell.imageView?.image = try? result.get()
+            }
+        })
+
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
 }
+
 
