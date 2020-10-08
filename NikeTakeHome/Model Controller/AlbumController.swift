@@ -40,7 +40,7 @@ final class AlbumController {
         }
     }
 
-    func downloadImageFor(album: Album, completion: @escaping (Result<UIImage,Error>) -> Void) {
+    func downloadImageFor(_ album: Album, completion: @escaping (Result<UIImage,Error>) -> Void) {
         let cachedKey = NSString(string: album.id)
 
         if let image = imageCache.object(forKey: cachedKey) {

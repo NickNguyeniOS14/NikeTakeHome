@@ -78,7 +78,7 @@ final class DetailAlbumViewController: UIViewController {
         ])
 
 
-        albumController.downloadImageFor(album: album) { (result) in
+        albumController.downloadImageFor(album) { (result) in
             DispatchQueue.main.async {
                 self.albumImageView.image = try? result.get()
             }

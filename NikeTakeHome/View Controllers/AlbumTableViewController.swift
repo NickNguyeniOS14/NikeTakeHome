@@ -43,7 +43,7 @@ final class AlbumTableViewController: UITableViewController {
 
         cell.detailTextLabel?.text = album.artistName
         
-        albumController.downloadImageFor(album: album,
+        albumController.downloadImageFor(album,
                                          completion: { result in
             DispatchQueue.main.async {
                 cell.setNeedsUpdateConstraints()
